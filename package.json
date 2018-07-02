@@ -1,0 +1,22 @@
+{
+  "name": "testheroku",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/fbmessaging.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "ww",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
+}
