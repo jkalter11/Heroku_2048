@@ -19,11 +19,33 @@ app.post('/webhook', (req, res) => {
 
     // Iterates over each entry - there may be multiple if batched
     body.entry.forEach(function(entry) {
+		// Gets the message. entry.messaging is an array, but 
+		// will only ever contain one message, so we get index 0
+		let webhook_event = entry.messaging[0];
+		console.log(webhook_event);
+     	if (webhook_event.game_play) {
+		  var senderId = webhook_event.sender.id; // Messenger sender id
+		  var playerId = webhook_event.game_play.player_id; // Instant Games player id
+		  var contextId = webhook_event.game_play.context_id; 
+		  var payload = webhook_event.game_play.payload;
+		  var playerWon = payload['playerWon'];
+		  if (playerWon) {
+		    sendMessage(
+		      senderId, 
+		      contextId, 
+		      'Congratulations on your victory!', 
+		      'Play Again'
+		    );
 
-      // Gets the message. entry.messaging is an array, but 
-      // will only ever contain one message, so we get index 0
-      let webhook_event = entry.messaging[0];
-      console.log(webhook_event);
+		  } else {
+		    sendMessage(
+		      senderId, 
+		      contextId, 
+		      'Better luck next time!', 
+		      'Rematch!'
+		    );
+		  }
+		}
     });
 
     // Returns a '200 OK' response to all requests
@@ -38,16 +60,16 @@ app.post('/webhook', (req, res) => {
 // Adds support for GET requests to our webhook
 app.get('/webhook', (req, res) => {
 
-  // Your verify token. Should be a random string.
-  let VERIFY_TOKEN = "testoken"
+ 	// Your verify token. Should be a random string.
+  	let VERIFY_TOKEN = "testoken"
     
-  // Parse the query params
-  let mode = req.query['hub.mode'];
-  let token = req.query['hub.verify_token'];
-  let challenge = req.query['hub.challenge'];
+  	// Parse the query params
+  	let mode = req.query['hub.mode'];
+  	let token = req.query['hub.verify_token'];
+  	let challenge = req.query['hub.challenge'];
     
-  // Checks if a token and mode is in the query string of the request
-  if (mode && token) {
+  	// Checks if a token and mode is in the query string of the request
+ 	if (mode && token) {
   
     // Checks the mode and token sent is correct
     if (mode === 'subscribe' && token === VERIFY_TOKEN) {
