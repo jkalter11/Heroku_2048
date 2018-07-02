@@ -27,9 +27,9 @@ app.post('/webhook', (req, res) => {
 		  var senderId = webhook_event.sender.id; // Messenger sender id
 		  var playerId = webhook_event.game_play.player_id; // Instant Games player id
 		  var contextId = webhook_event.game_play.context_id; 
-		  var payload = webhook_event.game_play.payload;
-		  var playerWon = payload['playerWon'];
-		  if (playerWon) {
+		  //var payload = webhook_event.game_play.payload;
+		  //var playerWon = payload['playerWon'];
+		  if (true) { //playerWon
 		    sendMessage(
 		      senderId, 
 		      contextId, 
