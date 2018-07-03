@@ -32,7 +32,7 @@ app.post('/webhook', (req, res) => {
 		  //var playerWon = payload['playerWon'];
 		  if (true) { //playerWon
 		    callSendAPI(
-		      senderId 
+		      senderId, 
 		      'Congratulations on your victory!', 
 		    );
 
@@ -46,11 +46,11 @@ app.post('/webhook', (req, res) => {
 		  }
 		}
 		else if (webhook_event.message){
-			// var senderId = webhook_event.sender.id;
-			// callSendAPI(
-		 //      senderId 
-		 //      'Congratulations on your victory!', 
-		 //    );
+			var senderId = webhook_event.sender.id;
+			callSendAPI(
+		      senderId, 
+		      'Congratulations on your victory!', 
+		    );
 		}
     });
 
