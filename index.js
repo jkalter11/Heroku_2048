@@ -23,7 +23,7 @@ app.post('/webhook', (req, res) => {
 		// Gets the message. entry.messaging is an array, but 
 		// will only ever contain one message, so we get index 0
 		let webhook_event = entry.messaging[0];
-		entry.messaging.forEach(function(messaging){console.log(entry.messaging);});
+		console.log(entry.messaging);
      	if (webhook_event.game_play) {
 		  var senderId = webhook_event.sender.id; // Messenger sender id
 		  var playerId = webhook_event.game_play.player_id; // Instant Games player id
@@ -47,8 +47,8 @@ app.post('/webhook', (req, res) => {
 		  }
 		}
 		else if (webhook_event.message){
-			var recipientId = webhook_event.recipient.id;
-			console.log(recipientId);
+			var sender = webhook_event.sender.id;
+			console.log(sender);
 			callSendAPI(
 		      recipientId, 
 		      'Congratulations on your victory!', 
@@ -75,9 +75,10 @@ function callSendAPI(sender_psid, response) {
   }
 
   // Send the HTTP request to the Messenger Platform
+  console.log(process.env.PAGE_ACCESS_TOKEN);
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": "EAADJ5l7nbhoBAKZBUJ3CnoHzE85E9ZA8oN5ZAUmioOea9GsXjc6QMthsGlKovQGzMMy4U24ywZB3RtsWwLCcMy3TBeU3Bvg07yFy8Y26ab5Swz9qta5288nunQ6duOd5ZAEU6DX5zY4FahZA3ex8L3w8klOHzXn5nFbqI0GsUBvaZBy9F3hg4ea"},
+    "qs": { "access_token": process.env.PAGE_ACCESS_TOKEN},
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
