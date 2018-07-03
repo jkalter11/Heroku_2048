@@ -23,7 +23,7 @@ app.post('/webhook', (req, res) => {
 		// Gets the message. entry.messaging is an array, but 
 		// will only ever contain one message, so we get index 0
 		let webhook_event = entry.messaging[0];
-		console.log(entry.messaging);
+		entry.messaging.forEach(function(messaging){console.log(entry.messaging);});
      	if (webhook_event.game_play) {
 		  var senderId = webhook_event.sender.id; // Messenger sender id
 		  var playerId = webhook_event.game_play.player_id; // Instant Games player id
