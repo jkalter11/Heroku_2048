@@ -32,7 +32,7 @@ app.post('/webhook', (req, res) => {
 		  //var playerWon = payload['playerWon'];
 		  if (true) { //playerWon
 		    callSendAPI(
-		      senderId, 
+		      playerId, 
 		      'Congratulations on your victory!', 
 		    );
 
