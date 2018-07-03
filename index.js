@@ -47,10 +47,10 @@ app.post('/webhook', (req, res) => {
 		  }
 		}
 		else if (webhook_event.message){
-			var sender = webhook_event.sender.id;
+			var senderId = webhook_event.sender.id;
 			console.log(sender);
 			callSendAPI(
-		      recipientId, 
+		      senderId, 
 		      'Congratulations on your victory!', 
 		    );
 		}
