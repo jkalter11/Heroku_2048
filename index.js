@@ -73,9 +73,9 @@ function callSendAPI(sender_psid, response) {
     "recipient": {
       "id": sender_psid
     },
-    "message": {
-    "text": "Congratulations!"
-  	},
+   //  "message": {
+   //  "text": "Congratulations!"
+  	// },
     "message": {
       "attachment": {
         "type": "template",
@@ -98,7 +98,7 @@ function callSendAPI(sender_psid, response) {
           ]
         }
       }
-    }
+    },
 
   // Send the HTTP request to the Messenger Platform
   request({
