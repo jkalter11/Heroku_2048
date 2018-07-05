@@ -84,16 +84,16 @@ function callSendAPI(sender_psid, response) {
           "elements": [
             {
               "title": "It has been a while since your last game. Time to get back",
-              "buttons": [
-                {
-                  "type": "game_play",
-                  "title": "Play Tic-Tac-Toe.",
-                  "payload": "{}",
-                  "game_metadata": {
-                  //"context_id": "<CONTEXT_ID>"
-                  }
-                }
-              ]
+              // "buttons": [
+              //   {
+              //     "type": "game_play",
+              //     "title": "Play Tic-Tac-Toe.",
+              //     "payload": "{}",
+              //     "game_metadata": {
+              //     //"context_id": "<CONTEXT_ID>"
+              //     }
+              //   }
+              // ]
             }
           ]
         }
