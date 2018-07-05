@@ -77,10 +77,10 @@ function callSendAPI(sender_psid, response) {
    //    "text": "Congratulations!"
   	// }
     "message": {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
           // elements: [
           //   {
           //     title: "Congrats!",
