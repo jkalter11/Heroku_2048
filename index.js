@@ -78,21 +78,21 @@ function callSendAPI(sender_psid, response) {
   	// }
     "message": {
       "text": "Congratulations!",
-      // "attachment": {
-      //   "type": "template",
-      //   "payload": {
-      //     "template_type": "generic",
-      //     "elements": [
-      //       {
-      //         "title": "Congrats!",
-      //         // "buttons": {
-      //         //   "type": "game_play",
-      //         //   "title": "YES"
-      //         // }
-      //       }
-      //     ]
-      //   }
-      // }
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
+          "elements": [
+            {
+              "title": "Congrats!",
+              // "buttons": {
+              //   "type": "game_play",
+              //   "title": "YES"
+              // }
+            }
+          ]
+        }
+      }
     }
   }
 
