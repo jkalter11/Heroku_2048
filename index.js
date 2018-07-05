@@ -77,7 +77,6 @@ function callSendAPI(sender_psid, response) {
    //    "text": "Congratulations!"
   	// }
     "message": {
-      "text": "Congratulations!",
       "attachment": {
         "type": "template",
         "payload": {
@@ -85,10 +84,13 @@ function callSendAPI(sender_psid, response) {
           "elements": [
             {
               "title": "Congrats!",
-              // "buttons": {
-              //   "type": "game_play",
-              //   "title": "YES"
-              // }
+              "buttons": [
+                {
+                  "type": "web_url",
+                  "url": "https://developers.facebook.com/docs/messenger-platform/send-messages/buttons",
+                  "title": "YES",
+                }
+              ]
             }
           ]
         }
