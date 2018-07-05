@@ -81,15 +81,15 @@ function callSendAPI(sender_psid, response) {
         type: "template",
         payload: {
           template_type: "generic",
-          elements: [
-            {
-              title: "Congrats!",
-              // "buttons": {
-              //   "type": "game_play",
-              //   "title": "YES"
-              // }
-            }
-          ]
+          // elements: [
+          //   {
+          //     title: "Congrats!",
+          //     // "buttons": {
+          //     //   "type": "game_play",
+          //     //   "title": "YES"
+          //     // }
+          //   }
+          // ]
         }
       }
     }
