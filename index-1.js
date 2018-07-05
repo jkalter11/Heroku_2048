@@ -75,34 +75,13 @@ function callSendAPI(sender_psid, response) {
     },
     "message": {
     "text": "Congratulations!"
-  	},
-    "message": {
-      "attachment": {
-        "type": "template",
-        "payload": {
-          "template_type": "generic",
-          "elements": [
-            {
-              "title": "It has been a while since your last game. Time to get back",
-              "buttons": [
-                {
-                  "type": "game_play",
-                  "title": "Play Tic-Tac-Toe.",
-                  "payload": "{}",
-                  "game_metadata": {
-                  //"context_id": "<CONTEXT_ID>"
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
+  	}
+  }
 
   // Send the HTTP request to the Messenger Platform
   request({
     uri: "https://graph.facebook.com/v2.6/me/messages?access_token="+token,
+    //"qs": {"access_token": ""},
     method: "POST",
     json: request_body
   }, (err, res, body) => {
