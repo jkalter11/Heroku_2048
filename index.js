@@ -69,7 +69,7 @@ app.post('/webhook', (req, res) => {
 function callSendAPI(sender_psid, response) {
   // Construct the message body
   let request_body = {
-  	"messaging_type": "RESPONSE",
+  	"messaging_type": "UPDATE",
     "recipient": {
       "id": sender_psid
     },
@@ -81,15 +81,15 @@ function callSendAPI(sender_psid, response) {
         "type": "template",
         "payload": {
           "template_type": "generic",
-          // elements: [
-          //   {
-          //     title: "Congrats!",
-          //     // "buttons": {
-          //     //   "type": "game_play",
-          //     //   "title": "YES"
-          //     // }
-          //   }
-          // ]
+          elements: [
+            {
+              title: "Congrats!",
+              // "buttons": {
+              //   "type": "game_play",
+              //   "title": "YES"
+              // }
+            }
+          ]
         }
       }
     }
