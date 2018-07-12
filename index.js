@@ -29,12 +29,13 @@ app.post('/webhook', (req, res) => {
 		  var senderId = webhook_event.sender.id; // Messenger sender id
 		  var playerId = webhook_event.game_play.player_id; // Instant Games player id
 		  var contextId = webhook_event.game_play.context_id; 
-		  //var payload = webhook_event.game_play.payload;
+		  var payload = JSON.parse(webhook_event.game_play.payload);
 		  //var playerWon = payload['playerWon'];
 		  if (true) { //playerWon
-		    SendTextMessage(
+		    SendGameMessage(
 		      senderId, 
 		      'Congratulations on your victory!', 
+          payload
 		    );
 		    console.log("game received");
 
@@ -113,20 +114,39 @@ function callSendAPI(sender_psid, response) {
   }); 
 }
 
-function SendTextMessage(sender_psid, response) {
-  console.log(sender_psid);
-  // Construct the message body
-  let request_body = {
-    "messaging_type": "RESPONSE",
-    "recipient": {
-      "id": sender_psid
-    },
-    "message": {
-      "text": "Congratulations!"
-    }
+function SendGameMessage(sender_psid, response, payload) {
+  var button = {
+    type: "game_play",
+    title: "GAME"
+  };
+  if (payload) {
+      button.payload = JSON.stringify(payload)
   }
+  var messageData = {
+      recipient: {
+          id: sender_psid
+      },
+      message: {
+          attachment: {
+              type: "template",
+              payload: {
+                  template_type: "generic",
+                  elements: [
+                  {
+                      title: response,
+                      buttons: [button]
+                  }
+                  ]
+              }
+          }
+      }
+  };
 
-   // Send the HTTP request to the Messenger Platform
+        callSendAPI(messageData);
+
+    }
+
+  // Send the HTTP request to the Messenger Platform
   request({
     uri: "https://graph.facebook.com/v2.6/me/messages?access_token="+token,
     method: "POST",
