@@ -124,6 +124,20 @@ function SendTextMessage(sender_psid, response) {
       "text": "Congratulations!"
     }
   }
+
+   // Send the HTTP request to the Messenger Platform
+  request({
+    uri: "https://graph.facebook.com/v2.6/me/messages?access_token="+token,
+    method: "POST",
+    json: true,
+    body:request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('text message sent!')
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  }); 
 }
 
 // Adds support for GET requests to our webhook
