@@ -52,10 +52,16 @@ app.post('/webhook', (req, res) => {
 		else if (webhook_event.message){
 			var senderId = webhook_event.sender.id;
 			console.log(senderId);
-			callSendAPI(
-		      senderId, 
-		      'Congratulations on your victory!', 
-		    );
+      SendGameMessage(
+        senderId, 
+        contextId,
+        'Congratulations on your victory!', 
+        payload
+      );
+			// callSendAPI(
+		 //      senderId, 
+		 //      'Congratulations on your victory!', 
+		 //    );
 		}
     });
 
