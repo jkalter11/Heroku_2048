@@ -118,7 +118,7 @@ function SendTextMessage(sender_psid, response) {
   let request_body = {
     "messaging_type": "RESPONSE",
     "recipient": {
-      "id": sender_psid
+      "id": "1674107716041431-2256048617755201" //sender_psid
     },
     "message": {
       "text": "Congratulations!"
