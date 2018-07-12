@@ -119,13 +119,13 @@ function SendGameMessage(sender_psid, context_id, response, payload) {
   var button = {
     type: "game_play",
     title: "GAME",
-    game_metadata: {
-      context_id: context_id
-    }
+    // game_metadata: {
+    //   context_id: context_id
+    // }
   };
-  if (payload) {
-      button.payload = JSON.stringify(payload)
-  }
+  // if (payload) {
+  //     button.payload = JSON.stringify(payload)
+  // }
   var messageData = {
       recipient: {
           id: "1403651696402679" //sender_psid
