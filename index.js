@@ -142,16 +142,12 @@ function SendGameMessage(sender_psid, response, payload) {
       }
   };
 
-        callSendAPI(messageData);
-
-    }
-
   // Send the HTTP request to the Messenger Platform
   request({
     uri: "https://graph.facebook.com/v2.6/me/messages?access_token="+token,
     method: "POST",
     json: true,
-    body:request_body
+    body: messageData
   }, (err, res, body) => {
     if (!err) {
       console.log('text message sent!')
