@@ -25,7 +25,7 @@ app.post('/webhook', (req, res) => {
 		// will only ever contain one message, so we get index 0
 		let webhook_event = entry.messaging[0];
 		console.log(entry.messaging);
-     	if (webhook_event.game_play) {
+    if (webhook_event.game_play) {
 		  var senderId = webhook_event.sender.id; // Messenger sender id
 		  var playerId = webhook_event.game_play.player_id; // Instant Games player id
 		  var contextId = webhook_event.game_play.context_id; 
@@ -83,7 +83,7 @@ function callSendAPI(sender_psid, response) {
           "template_type": "generic",
           "elements": [
             {
-              "title": "Congrats!",
+              "title": response,
               "buttons": [
                 {
                   "type": "web_url",

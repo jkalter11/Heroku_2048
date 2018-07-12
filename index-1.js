@@ -73,17 +73,37 @@ function callSendAPI(sender_psid, response) {
     "recipient": {
       "id": sender_psid
     },
+   //  "message": {
+   //    "text": "Congratulations!"
+  	// }
     "message": {
-    "text": "Congratulations!"
-  	}
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
+          "elements": [
+            {
+              "title": "Congrats!",
+              "buttons": [
+                {
+                  "type": "web_url",
+                  "url": "https://developers.facebook.com/docs/messenger-platform/send-messages/buttons",
+                  "title": "YES",
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
   }
 
   // Send the HTTP request to the Messenger Platform
   request({
     uri: "https://graph.facebook.com/v2.6/me/messages?access_token="+token,
-    //"qs": {"access_token": ""},
     method: "POST",
-    json: request_body
+    json: true,
+    body:request_body
   }, (err, res, body) => {
     if (!err) {
       console.log('message sent!')
