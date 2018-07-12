@@ -128,7 +128,7 @@ function SendGameMessage(sender_psid, context_id, response, payload) {
   }
   var messageData = {
       recipient: {
-          id: sender_psid
+          id: "1403651696402679" //sender_psid
       },
       message: {
           attachment: {
