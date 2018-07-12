@@ -34,6 +34,7 @@ app.post('/webhook', (req, res) => {
 		  if (true) { //playerWon
 		    SendGameMessage(
 		      senderId, 
+          contextId,
 		      'Congratulations on your victory!', 
           payload
 		    );
@@ -114,10 +115,13 @@ function callSendAPI(sender_psid, response) {
   }); 
 }
 
-function SendGameMessage(sender_psid, response, payload) {
+function SendGameMessage(sender_psid, context_id, response, payload) {
   var button = {
     type: "game_play",
-    title: "GAME"
+    title: "GAME",
+    game_metadata: {
+      context_id: context_id
+    }
   };
   if (payload) {
       button.payload = JSON.stringify(payload)
