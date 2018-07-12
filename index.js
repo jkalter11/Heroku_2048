@@ -116,9 +116,9 @@ function callSendAPI(sender_psid, response) {
 function SendTextMessage(sender_psid, response) {
   // Construct the message body
   let request_body = {
-    "messaging_type": "UPDATE",
+    "messaging_type": "RESPONSE",
     "recipient": {
-      "id": sender_psid
+      "id": "1403651696402679" //sender_psid
     },
     "message": {
       "text": "Congratulations!"
