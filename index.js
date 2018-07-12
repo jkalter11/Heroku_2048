@@ -33,7 +33,7 @@ app.post('/webhook', (req, res) => {
 		  //var playerWon = payload['playerWon'];
 		  if (true) { //playerWon
 		    SendTextMessage(
-		      senderId, 
+		      senderId+playerId, 
 		      'Congratulations on your victory!', 
 		    );
 		    console.log("game received");
