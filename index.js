@@ -33,7 +33,7 @@ app.post('/webhook', (req, res) => {
 		  //var playerWon = payload['playerWon'];
 		  if (true) { //playerWon
 		    SendTextMessage(
-		      senderId+playerId, 
+		      senderId, 
 		      'Congratulations on your victory!', 
 		    );
 		    console.log("game received");
@@ -114,11 +114,12 @@ function callSendAPI(sender_psid, response) {
 }
 
 function SendTextMessage(sender_psid, response) {
+  console.log(sender_psid);
   // Construct the message body
   let request_body = {
     "messaging_type": "RESPONSE",
     "recipient": {
-      "id": "1674107716041431_2256048617755201" //sender_psid
+      "id": sender_psid
     },
     "message": {
       "text": "Congratulations!"
