@@ -42,27 +42,17 @@ app.post('/webhook', (req, res) => {
 		    console.log("game received");
 
 		  } else {
-		    sendMessage(
-		      senderId, 
-		      contextId, 
-		      'Better luck next time!', 
-		      'Rematch!'
-		    );
+
 		  }
 		}
 		else if (webhook_event.message){
 			var senderId = webhook_event.sender.id;
 			console.log(senderId);
-      SendGameMessage(
-        senderId, 
-        contextId,
-        'Congratulations on your victory!', 
-        payload
-      );
-			// callSendAPI (
-	  //     senderId, 
-	  //     'Congratulations on your victory!', 
-		 //  );
+
+			callSendAPI (
+	      senderId, 
+	      'Congratulations on your victory!', 
+		  );
 		}
     });
 
@@ -149,7 +139,7 @@ function SendGameMessage(sender_psid, player_id, context_id, response, payload) 
                       "buttons": [{
                         "type": "game_play",
                         "title": "GAME",
-                        "payload": "{'message':'Don\'t Panic!'}",
+                        "payload": "{}",
                         "game_metadata": { // Only one of the below
                           "player_id": player_id,
                            "context_id": context_id
