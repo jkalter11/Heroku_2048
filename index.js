@@ -145,7 +145,13 @@ function SendGameMessage(sender_psid, context_id, response, payload) {
                   "elements": [
                     {
                       "title": response,
-                      //"buttons": [button]
+                      "buttons": [{
+                        "type": "game_play",
+                        "title": "GAME",
+                        "game_metadata": {
+                          "context_id": context_id
+                        }
+                      }]
                     }
                   ]
               }
