@@ -133,6 +133,7 @@ function SendGameMessage(sender_psid, context_id, response, payload) {
   //     button.payload = JSON.stringify(payload)
   // }
   let messageData = {
+    "messaging_type": "RESPONSE",
       "recipient": {
           "id": "1403651696402679" //sender_psid
       },
