@@ -148,7 +148,7 @@ function SendGameMessage(sender_psid, context_id, response, payload) {
                       "buttons": [{
                         "type": "game_play",
                         "title": "GAME",
-                        "payload" JSON.stringify(payload)
+                        "payload": JSON.stringify(payload)
                       }]
                     }
                   ]
