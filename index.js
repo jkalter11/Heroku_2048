@@ -34,6 +34,7 @@ app.post('/webhook', (req, res) => {
 		  if (true) { //playerWon
 		    SendGameMessage(
 		      senderId, 
+          playerId,
           contextId,
 		      'Congratulations on your victory!', 
           payload
@@ -52,16 +53,16 @@ app.post('/webhook', (req, res) => {
 		else if (webhook_event.message){
 			var senderId = webhook_event.sender.id;
 			console.log(senderId);
-      // SendGameMessage(
-      //   senderId, 
-      //   contextId,
-      //   'Congratulations on your victory!', 
-      //   payload
-      // );
-			callSendAPI (
-	      senderId, 
-	      'Congratulations on your victory!', 
-		  );
+      SendGameMessage(
+        senderId, 
+        contextId,
+        'Congratulations on your victory!', 
+        payload
+      );
+			// callSendAPI (
+	  //     senderId, 
+	  //     'Congratulations on your victory!', 
+		 //  );
 		}
     });
 
@@ -121,7 +122,7 @@ function callSendAPI(sender_psid, response) {
   }); 
 }
 
-function SendGameMessage(sender_psid, context_id, response, payload) {
+function SendGameMessage(sender_psid, player_id, context_id, response, payload) {
   var button = {
     type: "game_play",
     title: "GAME",
@@ -135,7 +136,7 @@ function SendGameMessage(sender_psid, context_id, response, payload) {
   let messageData = {
     "messaging_type": "RESPONSE",
       "recipient": {
-          "id": "1403651696402679" //sender_psid
+          "id": sender_psid
       },
       "message": {
           "attachment": {
@@ -148,7 +149,11 @@ function SendGameMessage(sender_psid, context_id, response, payload) {
                       "buttons": [{
                         "type": "game_play",
                         "title": "GAME",
-                        "payload": JSON.stringify(payload)
+                        "payload": "{'message':'Don\'t Panic!'}",
+                        "game_metadata": { // Only one of the below
+                          "player_id": player_id,
+                           "context_id": context_id
+                        }
                       }]
                     }
                   ]
