@@ -132,20 +132,20 @@ function SendGameMessage(sender_psid, context_id, response, payload) {
   // if (payload) {
   //     button.payload = JSON.stringify(payload)
   // }
-  var messageData = {
-      recipient: {
-          id: "1403651696402679" //sender_psid
+  let messageData = {
+      "recipient": {
+          "id": "1403651696402679" //sender_psid
       },
-      message: {
-          attachment: {
-              type: "template",
-              payload: {
-                  template_type: "generic",
-                  elements: [
-                  {
-                      title: response,
-                      buttons: [button]
-                  }
+      "message": {
+          "attachment": {
+              "type": "template",
+              "payload": {
+                  "template_type": "generic",
+                  "elements": [
+                    {
+                      "title": response,
+                      //"buttons": [button]
+                    }
                   ]
               }
           }
